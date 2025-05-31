@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-space: #2A003A;
+  --color-electric-blue: #00F5FF;
+  --color-neon-pink: #FF2D75;
+  --color-dark-space: #1A0029;
+  --color-light-space: #4A0059;
+  --color-success: #00FF9D;
+  --color-warning: #FFD600;
+  --color-error: #FF3D00;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply bg-space text-gray-100 font-body overflow-x-hidden;
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(0, 245, 255, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(255, 45, 117, 0.05) 0%, transparent 50%);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading text-electric-blue;
+    line-height: 1.2;
+  }
+  
+  h1 {
+    @apply text-2xl sm:text-3xl md:text-4xl;
+  }
+  
+  h2 {
+    @apply text-xl sm:text-2xl md:text-3xl;
+  }
+  
+  h3 {
+    @apply text-lg sm:text-xl md:text-2xl;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-5 py-3 rounded-md font-heading text-sm transition-all duration-300;
+  }
+  
+  .btn-primary {
+    @apply bg-electric-blue text-space hover:bg-opacity-80 shadow-glow-blue;
+  }
+  
+  .btn-secondary {
+    @apply bg-neon-pink text-white hover:bg-opacity-80 shadow-glow-pink;
+  }
+  
+  .circuit-border {
+    @apply relative border-2 border-electric-blue rounded-lg overflow-hidden;
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+  }
+  
+  .circuit-border::before {
+    content: '';
+    @apply absolute inset-0 pointer-events-none opacity-10;
+    background-image: url('/images/circuit-pattern.png');
+    background-size: cover;
+    z-index: -1;
+  }
+  
+  .control-panel {
+    @apply bg-space border-2 border-electric-blue rounded-lg p-4 transition-all duration-300;
+    box-shadow: 0 0 15px rgba(0, 245, 255, 0.2);
+  }
+  
+  .control-panel:hover {
+    box-shadow: 0 0 25px rgba(0, 245, 255, 0.4);
+    transform: translateY(-5px);
+  }
+  
+  .tech-tree-node {
+    @apply relative flex items-center justify-center w-20 h-20 rounded-full bg-space border-2;
+    transition: all 0.3s ease;
+  }
+  
+  .tech-tree-node.active {
+    @apply border-electric-blue;
+    box-shadow: 0 0 15px rgba(0, 245, 255, 0.5);
+  }
+  
+  .shadow-glow-blue {
+    box-shadow: 0 0 15px rgba(0, 245, 255, 0.5);
+  }
+  
+  .shadow-glow-pink {
+    box-shadow: 0 0 15px rgba(255, 45, 117, 0.5);
+  }
+  
+  .pixelated {
+    image-rendering: pixelated;
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rocket-launch {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  20% { transform: translateY(0) scale(1.05); opacity: 1; }
+  100% { transform: translateY(-500px) scale(0.5); opacity: 0; }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.animate-rotate {
+  animation: rotate 10s linear infinite;
+}
+
+.animate-rocket {
+  animation: rocket-launch 2s ease-out forwards;
+}
+
+.stars-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}

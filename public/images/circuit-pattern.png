@@ -1,0 +1,5 @@
+// This file would typically contain a binary image, but since we can't include binary files in our artifact,
+// we'll use a placeholder comment.
+// The circuit pattern would be a repeating pattern of circuit board-like lines and nodes
+// that will be used as a background texture for the "circuit-border" component.
+// You would need to source or create a suitable circuit pattern image and place it in this location.
